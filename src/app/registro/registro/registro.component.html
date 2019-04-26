@@ -1,0 +1,260 @@
+<div class="card animated fadeIn">
+    <h5 class="card-header">Información del alumno</h5>
+
+    <form (ngSubmit)="registrarEstudiante()" [formGroup]="forma">
+        <!--Datos de identificacion-->
+        <div class="card-body animated fadeIn">
+            <h5 class="card-title">Datos de identificación</h5>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Numero unico de identificación</label>
+                    <input type="number" class="form-control" formControlName="numIdentificacion" name="numIdentificacion" placeholder="Identificación">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Fecha del estado<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <input type="date" class="form-control" placeholder="dd/mm/aaaa" formControlName="fechaEstado" name="fechaEstado">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Estado Alumno<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <input type="text" class="form-control" formControlName="estadoAlumno" name="estadoAlumno">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Tipo ID<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <select class="form-control" formControlName="tipoId" name="tipoId">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Numero<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <input type="number" class="form-control" formControlName="numero" name="numero">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Departamento de expedición<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <select class="form-control " formControlName="depExp" name="depExp">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Municipio de Expedición<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <select id="inputState" class="form-control" formControlName="munExp" name="munExp">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Genero<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <select class="form-control" formControlName="genero" name="genero">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Fecha de Nacimiento<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <input type="date" class="form-control" placeholder="dd/mm/aaaa" formControlName="fechaNacimiento" name="fechaNacimiento">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Departamento de nacimiento<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <select class="form-control" formControlName="depNacimiento" name="depNacimiento">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Municipio de nacimiento<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <select id="inputState" class="form-control" formControlName="munNacimiento" name="munNacimiento">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+            </div>
+            <button *ngIf="this.siguiente1 != true" type="button" (click)="nextPage1()" class="btn btn-primary">Siguiente</button>
+        </div>
+        <!--Nombres y apellidos-->
+        <div class="card-body animated fadeIn" *ngIf="this.siguiente1 == true">
+            <h5 class="card-title">Nombres y apellidos</h5>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Primer nombre<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <input type="text" class="form-control" id="inputEmail4" formControlName="primerNombre" name="primerNombre">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Segundo nombre</label>
+                    <input type="text" class="form-control" id="inputPassword4" formControlName="segundoNombre" name="segundoNombre">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Primer apellido<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <input type="text" class="form-control" id="inputEmail4" formControlName="primerApellido" name="primerApellido">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Segundo apellido</label>
+                    <input type="text" class="form-control" id="inputPassword4" formControlName="segundoApellido" name="segundoApellido">
+                </div>
+            </div>
+            <button type="button" *ngIf="this.siguiente2 != true" (click)="nextPage2()" class="btn btn-primary">Siguiente</button>
+        </div>
+        <div class="card-body animated fadeIn" *ngIf="this.siguiente2 == true">
+            <h5 class="card-title">Direccion residencia</h5>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Dirección residencia<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <input type="text" class="form-control" id="inputEmail4" formControlName="dirResidencia" name="dirResidencia">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Barrio residencia</label>
+                    <input type="text" class="form-control" id="inputPassword4" formControlName="barrioResidencia" name="barrioResidencia">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Departamento residencia<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <select id="inputState" class="form-control" formControlName="depResidencia" name="depResidencia">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Municipio residencia<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <select id="inputState" class="form-control" formControlName="munResidencia" name="munResidencia">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Zona<span [ngClass]="{'text-danger': true}"> *</span></label>
+                    <select id="inputState" class="form-control" formControlName="zona" name="zona">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Telefono</label>
+                    <input type="number" class="form-control" id="inputEmail4" formControlName="telefono" name="telefono">
+                </div>
+            </div>
+            <button type="button" *ngIf="this.siguiente3 != true" (click)="nextPage3()" class="btn btn-primary">Siguiente</button>
+        </div>
+        <div class="card-body animated fadeIn" *ngIf="this.siguiente3 == true">
+            <h5 class="card-title">Información academica</h5>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Caracter</label>
+                    <select id="inputState" class="form-control" formControlName="caracter" name="caracter">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Especialidad</label>
+                    <select id="inputState" class="form-control" formControlName="especialidad" name="especialidad">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1" formControlName="subsidio" name="subsidio">
+                    <label class="form-check-label" for="gridCheck1">
+                  Tiene subsidio
+                </label>
+                </div>
+            </div>
+            <button type="button" *ngIf="this.siguiente4 != true" (click)="nextPage4()" class="btn btn-primary">Siguiente</button>
+        </div>
+        <div class="card-body animated fadeIn" *ngIf="this.siguiente4 == true">
+            <h5 class="card-title">Afiliación al sistema de salud</h5>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">EPS Afiliado</label>
+                    <select id="inputState" class="form-control" formControlName="EPS" name="EPS">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">IPS Asignada</label>
+                    <select id="inputState" class="form-control" formControlName="IPS" name="IPS">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Tipo sangre y RH</label>
+                    <select id="inputState" class="form-control" formControlName="RH" name="RH">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">ARS Afiliado</label>
+                    <select id="inputState" class="form-control" formControlName="ARS" name="ARS">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+            </div>
+            <button type="button" *ngIf="this.siguiente5 != true" (click)="nextPage5()" class="btn btn-primary">Siguiente</button>
+        </div>
+        <div class="card-body animated fadeIn" *ngIf="this.siguiente5 == true">
+            <h5 class="card-title">Desplazamiento</h5>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Poblacion victima del conflicto</label>
+                    <select id="inputState" class="form-control" formControlName="victConflicto" name="victConflicto">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Fecha expulsion</label>
+                    <input type="date" class="form-control" id="inputEmail4" placeholder="dd/mm/aaaa" formControlName="fechaExpulsion" name="fechaExpulsion">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Departamento expulsor</label>
+                    <select id="inputState" class="form-control" formControlName="depExpulsor" name="depExpulsor">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Municipio expulsor</label>
+                    <select id="inputState" class="form-control" formControlName="munExpulsor" name="munExpulsor">
+                        <option selected>Seleccionar...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1" formControlName="certificado" name="certificado">
+                    <label class="form-check-label" for="gridCheck1">
+                  Certificado
+                </label>
+                </div>
+            </div>
+            <button [disabled]="forma.invalid" type="submit" class="btn btn-primary">Registrar</button>
+        </div>
+
+    </form>
+
+</div>

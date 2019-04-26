@@ -1,0 +1,7 @@
+{
+    "data": [
+        { "value": "0", "code": "Cedula de ciudadania" },
+        { "value": "1", "code": "Tarjeta de identidad" },
+        { "value": "2", "code": "Registro civil" }
+    ]
+}
